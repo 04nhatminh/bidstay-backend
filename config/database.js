@@ -51,6 +51,17 @@ async function createSystemParametersTable() {
             ParamValue VARCHAR(255) NOT NULL
         )
     `);
+
+    await pool.execute(`
+        INSERT INTO SystemParameters (ParamID, ParamName, ParamValue) VALUES
+            (1, 'StartPriceFactor', '0.7'),
+            (2, 'BidIncrementFactor', '0.05'),
+            (3, 'AuctionDurationDays', '5'),
+            (4, 'BidLeadTimeDays', '15'),
+            (5, 'PaymentDeadlineDays', '3'),
+            (6, 'ServiceFeeFactor', '0.15')
+        ON DUPLICATE KEY UPDATE ParamValue = VALUES(ParamValue);
+    `)
 }
 
 async function createAdministrativeRegionsTable() {
@@ -1122,6 +1133,19 @@ async function createRoomTypesTable() {
             RoomTypeName VARCHAR(255),
             RoomTypeImageURL VARCHAR(255)
         )
+    `);
+
+    await pool.execute(`
+        INSERT INTO RoomTypes (RoomTypeID, RoomTypeName)
+        VALUES
+            (1, 'Khách sạn'),
+            (2, 'Căn hộ'),
+            (3, 'Homestay'),
+            (4, 'Resort'),
+            (5, 'Biệt thự'),
+            (6, 'Studio'),
+            (7, 'Nhà nghỉ')
+        ON DUPLICATE KEY UPDATE RoomTypeName = VALUES(RoomTypeName);
     `);
 }
 

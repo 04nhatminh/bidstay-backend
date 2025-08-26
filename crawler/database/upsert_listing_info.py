@@ -724,7 +724,7 @@ def load_all_listing_files():
     listing_files = []
     
     # Check crawled_data directory
-    crawled_data_dir = "output/crawled_data"
+    crawled_data_dir = "crawler/output/crawled_data"
     if os.path.exists(crawled_data_dir):
         for filename in os.listdir(crawled_data_dir):
             if filename.startswith("listing_info_") and filename.endswith(".json"):
@@ -739,7 +739,7 @@ def load_all_reviews_files():
     reviews_files = []
     
     # Check crawled_data directory
-    crawled_data_dir = "output/crawled_data"
+    crawled_data_dir = "crawler/output/crawled_data"
     if os.path.exists(crawled_data_dir):
         for filename in os.listdir(crawled_data_dir):
             if filename.startswith("review_") and filename.endswith(".json"):
